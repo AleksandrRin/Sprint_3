@@ -18,3 +18,6 @@ class TestLK:
         logo_button.click()
 
     def test_log_out(self, lk_in):
+        time.sleep(2)
+        log_out_button = lk_in.find_element(By.XPATH, '//button[contains(text(), "Выход")]')
+        log_out_button.click()
