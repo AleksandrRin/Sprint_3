@@ -1,14 +1,13 @@
 import time
-
-from selenium.webdriver.common.by import By
+from lokators import Lokator
 
 
 class TestConstructor:
     def test_check_constructor(self, login):
-        time.sleep(2)
-        bun_button = login.find_element(By.XPATH, '//span[contains(text(), "Булки")]')
-        bun_button.click()
-        sauce_button = login.find_element(By.XPATH, '//span[contains(text(), "Соусы")]')
-        sauce_button.click()
-        filling_button = login.find_element(By.XPATH, '//span[contains(text(), "Начинки")]')
-        filling_button.click()
+        time.sleep(1)
+        login.find_element(*Lokator.FILLING_BUTTON).click()
+        time.sleep(1)
+        login.find_element(*Lokator.BUN_BUTTON).click()
+        time.sleep(1)
+        login.find_element(*Lokator.SAUCE_BUTTON).click()
+        time.sleep(1)
