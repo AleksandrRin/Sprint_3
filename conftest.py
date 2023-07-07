@@ -5,14 +5,14 @@ from lokators import Lokator
 base_url = 'https://stellarburgers.nomoreparties.site/'
 
 @pytest.fixture
-def browser():
+def browser(): # Фикстура для драйвера
     driver = webdriver.Chrome()
     driver.get(base_url)
     yield driver
     driver.quit()
 
 @pytest.fixture
-def login(browser):
+def login(browser): # Фикстура для авторизации
     browser.find_element(*Lokator.ENTER_ACCOUNT).click()
     browser.find_element(*Lokator.EMAIL_FIELD).send_keys('jamespark@example.net')
     browser.find_element(*Lokator.PASSWORD_FIELD).send_keys('1234567890')
@@ -20,7 +20,7 @@ def login(browser):
     yield browser
 
 @pytest.fixture
-def lk_in(login):
+def lk_in(login): # Фиекстура для входа в личный кабинет
     login.find_element(*Lokator.LK_BUTTON).click()
     yield login
 

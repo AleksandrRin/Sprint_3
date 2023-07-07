@@ -1,5 +1,4 @@
 import time
-
 from lokators import Lokator
 class TestLK:
 
