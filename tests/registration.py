@@ -6,9 +6,12 @@ email = faker.email()
 password = faker.password()
 
 
-class TestBurgers:
+class TestRegistration:
 
-    def test_registration(self, browser): # Тест регистрации
+    def test_registration(self, browser):
+        """
+        Тест регистрации
+        """
         browser.find_element(*Lokator.ENTER_ACCOUNT).click()
         browser.find_element(*Lokator.REGISTRATION_BUTTON).click()
         browser.find_element(*Lokator.NAME_FIELD).send_keys('Aleksandr')
@@ -16,7 +19,10 @@ class TestBurgers:
         browser.find_element(*Lokator.PASSWORD_FIELD).send_keys(password)
         browser.find_element(*Lokator.SIGN_IN_BUTTON).click()
 
-    def test_failed_registration(self, browser): # Тест провальной регистрации
+    def test_failed_registration(self, browser):
+        """
+        Тест провальной регистрации
+        """
         browser.find_element(*Lokator.ENTER_ACCOUNT).click()
         browser.find_element(*Lokator.REGISTRATION_BUTTON).click()
         browser.find_element(*Lokator.NAME_FIELD).send_keys('Aleksandr')
