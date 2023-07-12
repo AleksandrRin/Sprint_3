@@ -1,5 +1,7 @@
 from lokators import Lokator
 from faker import Faker
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 faker = Faker()
 email = faker.email()
@@ -18,6 +20,8 @@ class TestRegistration:
         browser.find_element(*Lokator.EMAIL_FIELD).send_keys(email)
         browser.find_element(*Lokator.PASSWORD_FIELD).send_keys(password)
         browser.find_element(*Lokator.SIGN_IN_BUTTON).click()
+        WebDriverWait(browser, 10).until(EC.url_changes(browser.current_url))
+        assert browser.current_url == 'https://stellarburgers.nomoreparties.site/login'
 
     def test_failed_registration(self, browser):
         """
